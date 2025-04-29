@@ -35,7 +35,7 @@ def save_and_process_video(file):
     temp_path = os.path.join(temp_dir, file.filename)  # Define temporary path
     file.save(temp_path)  # Save uploaded file to temp path
     text_list, clips = process_video(temp_path, temp_dir)  # Process video
-    return text_list, temp_path, clips  # Return extracted text list, path, and clip paths
+    return temp_dir, text_list, temp_path, clips  # Return extracted text list, path, and clip paths
 
 
 # Function to prepare prompt by replacing placeholders with actual extracted text

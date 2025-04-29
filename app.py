@@ -60,8 +60,8 @@ def upload_videos():
         video2 = request.files["video2"]
 
         # Save videos temporarily and extract text and clips
-        text_list1, temp_path1, clips1 = save_and_process_video(video1)
-        text_list2, temp_path2, clips2 = save_and_process_video(video2)
+        temp_dir1, text_list1, temp_path1, clips1 = save_and_process_video(video1)
+        temp_dir2, text_list2, temp_path2, clips2 = save_and_process_video(video2)
 
         # Combine text extracted from both videos
         text1 = " ".join(text_list1)
@@ -94,6 +94,9 @@ def upload_videos():
             # Unescape any HTML entities in the summary text
             for lang, summary in summary_output_json.get("summary", {}).items():
                 summary_output_json["summary"][lang] = html.unescape(summary)
+
+            os.rmdir(temp_dir1)
+            os.rmdir(temp_dir2)
 
             # Render output page with summary and video paths
             return render_template(
