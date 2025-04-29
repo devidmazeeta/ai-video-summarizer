@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>AI Video Summarizer - Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 15px;
+        }
+
+        .upload-card {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            color: #333;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .logo-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6f61;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #ff6f61, #ff9472);
+            border: none;
+            padding: 0.6rem;
+            font-weight: 600;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #ff3e3e, #ff7a5c);
+        }
+
+        .logout-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .logout-button button {
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .logout-button button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        #processing-message {
+            display: none;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #555;
+            background-color: #fff3cd;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ffeeba;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Logout Button -->
+<div class="logout-button">
+    <form action="{{ url_for('logout') }}" method="get">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+
+<div class="upload-card">
+    <div class="logo-title">AI Video Summarizer</div>
+    <h5 class="text-center mb-4">Upload Two Videos</h5>
+
+    <form method="POST" enctype="multipart/form-data" id="uploadForm">
+        <div class="mb-3">
+            <label for="video1" class="form-label">Video 1</label>
+            <input class="form-control" type="file" id="video1" name="video1" accept="video/*" required/>
+        </div>
+
+        <div class="mb-3">
+            <label for="video2" class="form-label">Video 2</label>
+            <input class="form-control" type="file" id="video2" name="video2" accept="video/*" required/>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-custom" id="processBtn">Process</button>
+        </div>
+    </form>
+
+    <div id="processing-message">
+        Video processing may take some time, as it involves extracting speech from the video, transcribing it to text,
+        and generating a summary along with multiple-choice questions (MCQs). The time required will depend on the
+        length of the uploaded videos.
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', function (e) {
+        const form = e.target;
+        if (form.checkValidity()) {
+            document.getElementById('processing-message').style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>

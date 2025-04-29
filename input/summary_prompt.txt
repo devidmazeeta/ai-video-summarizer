@@ -1,0 +1,33 @@
+You must respond ONLY in valid JSON format. No extra text, no explanation.
+
+I have provided two text inputs.
+
+Your tasks are:
+1. Identify the main subject/topic of the two texts.
+2. Evaluate and choose which text is better (more detailed, clear, or informative).
+3. Write a combined summary of both texts without mentioning phrases like "the provided texts" or "Text 1/Text 2" — make the summary flow naturally.
+4. Translate the summary into Tamil, Telugu, Malayalam and Hindi separately.
+5. Create 5 MCQs (Multiple Choice Questions) based on the combined content, where each MCQ should include 4 choices and the correct answer indicated by the choice index.
+6. Provide the final output in the following JSON format:
+
+{
+  "subject": "String",
+  "bestText": "Integer",
+  "summary": {
+    "english": "String",
+    "tamil": "String",
+    "telugu": "String",
+    "malayalam": "String",
+    "hindi": "String"
+  },
+  "mcqs": [
+    {
+      "question": "String",
+      "choices": ["String", "String", "String", "String"],
+      "answer": "Integer"
+    }
+  ]
+}
+
+Text 1: <TEXT1>
+Text 2: <TEXT2>

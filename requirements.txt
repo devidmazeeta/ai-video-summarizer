@@ -1,0 +1,5 @@
+openai~=1.76.0
+flask~=3.0.3
+moviepy~=1.0.3
+SpeechRecognition~=3.10.4
+mysql-connector

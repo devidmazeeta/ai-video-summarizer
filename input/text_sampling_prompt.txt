@@ -1,0 +1,21 @@
+You must respond ONLY in valid JSON format. No extra text, no explanation.
+
+I will provide two different arrays of text.
+
+Your task:
+
+- From each array, identify the best text elements based on overall quality or relevance.
+- Pick 50% of the total number of elements from each array (rounded down if odd).
+- Return the indexes (not the text) of the selected elements from each array.
+
+Respond in the following JSON format:
+
+{
+  "video1": [/* Integer indexes from Array 1 */],
+  "video2": [/* Integer indexes from Array 2 */]
+}
+
+Arrays:
+
+Array1: <TEXT1>
+Array2: <TEXT2>
