@@ -1,0 +1,7 @@
+# Only ignore MP4s inside input/ and static/processed/
+input/*.mp4
+static/processed/*.mp4
+
+# General Python ignores
+__pycache__/
+.venv/
