@@ -98,7 +98,7 @@ def select_and_combine_best_clips(text_list1, text_list2, clips1, clips2):
         "input/text_sampling_prompt.txt",
         str(text_list1),
         str(text_list2),
-        "summary_prompt.txt",
+        "text_sampling_prompt.txt",
     )
 
     # Call OpenAI to process and find best clips

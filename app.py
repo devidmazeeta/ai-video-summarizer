@@ -95,8 +95,8 @@ def upload_videos():
             for lang, summary in summary_output_json.get("summary", {}).items():
                 summary_output_json["summary"][lang] = html.unescape(summary)
 
-            os.rmdir(temp_dir1)
-            os.rmdir(temp_dir2)
+            shutil.rmtree(temp_dir1)
+            shutil.rmtree(temp_dir2)
 
             # Render output page with summary and video paths
             return render_template(
